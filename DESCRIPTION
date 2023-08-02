@@ -1,0 +1,14 @@
+Package: Bam2Bsseq
+Title: Read Nanopore Data into Bsseq
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Yixuan", 
+           family = "Chen", 
+           email = "ychen590@jh.edu", 
+           role = c("aut", "cre"))
+Description: Instructions and tools for reading in nanopore data into Bsseq.
+Imports: bsseq
+License: Artistic-2.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
