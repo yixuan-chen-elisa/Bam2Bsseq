@@ -13,9 +13,9 @@ Use `Bed2Bsseq()` function to read in, extract methylation, coverage and ambiguo
 
 ## Installation
 
-You can install the development version of Bam2Bsseq from [GitHub](https://github.com/) with:
+You can install the development version of Bam2Bsseq from [GitHub](https://github.com/yixuan-chen-elisa/Bam2Bsseq) with:
 
 ``` r
 # install.packages("Bam2Bsseq")
-devtools::install_github("")
+devtools::install_github(repo = "yixuan-chen-elisa/Bam2Bsseq")
 ```
