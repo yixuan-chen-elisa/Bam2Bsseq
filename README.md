@@ -9,7 +9,7 @@ See <https://github.com/epi2me-labs/modbam2bed> for details.
 
 ## Part 2: Convert BED files into bsseq objects
 
-Use `Bed2Bsseq()` function to read in, extract methylation, coverage and ambiguous modification status data and create Bsseq object from bedMethyl files obtained by modbam2bed program. The resulting Bsseq object can be used for further differential methylation analysis.
+Use `read.modbam2bed()` function to read in, extract methylation, coverage and ambiguous modification status data and create Bsseq object from bedMethyl files obtained by modbam2bed program. The resulting Bsseq object can be used for further differential methylation analysis.
 
 ## Installation
 

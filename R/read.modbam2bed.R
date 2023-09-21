@@ -18,7 +18,7 @@
 #'   probability lower than threshold (default = 0.66).
 #'
 #' Then, the BED files are read in and the Bsseq object is constructed via
-#' \code{Bed2Bsseq()} function. The function reads in BED files, extract genomic
+#' \code{read.modbam2bed()} function. The function reads in BED files, extract genomic
 #' regions, methylation, coverage, ambiguous modification status data and sample
 #' information and then construct Bsseq object using \code{BSseq} function
 #' within the package.
@@ -45,15 +45,19 @@
 #' pd = data.frame(condition =c(rep("control",3),rep("treatment",3)),
 #'                replicate = rep(c("rep1","rep2","rep3"),2))
 #'
-#' bsseq_nano = Bed2Bsseq(files_default,pData=pd)
+#' bsseq_nano = read.modbam2bed(files_default,colData=pd,rmZeroCov = F,
+#'              strandCollapse=T)
 #'
 #'
 
-Bed2Bsseq = function(files, pData = NULL){
+read.modbam2bed = function(files,
+                           colData = NULL,
+                           rmZeroCov = FALSE,
+                           strandCollapse = TRUE){
   gr_list = list()
   sampleNames = sub("\\.bed$","",basename(files))
-  if (!is.null(pData)){
-    rownames(pData) <- sampleNames
+  if (!is.null(colData)){
+    rownames(colData) <- sampleNames
   }
 
   for (i in seq_along(files)){
@@ -83,10 +87,11 @@ Bed2Bsseq = function(files, pData = NULL){
                     filter = as.matrix(filter),
                     coef = NULL,se.coef = NULL,
                     pos = start(overlap_gr),trans = NULL,
-                    parameters = NULL, pData = pData, gr = NULL,
+                    parameters = NULL, pData = colData, gr = NULL,
                     chr = as.vector(seqnames(overlap_gr)),
-                    sampleNames = sampleNames,rmZeroCov = FALSE)
+                    sampleNames = sampleNames,rmZeroCov = rmZeroCov)
 
+  if (strandCollapse){bsseq:::strandCollapse(bsseq_obj)}
   return(bsseq_obj)
 }
 
