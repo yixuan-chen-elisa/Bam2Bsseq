@@ -24,8 +24,9 @@
 #' within the package.
 #'
 #' @param files vector, BED files
-#' @param pData data frame, phenotypic data with samples as rows and variables as columns
-#'
+#' @param colData data frame, phenotypic data with samples as rows and variables as columns
+#' @param rmZeroCov logical, Should genomic locations with zero coverage in all samples be removed
+#' @param strandCollapse logical, collapse methylation and coverage information across two strands
 #'
 #' @return BSseq object
 #'
